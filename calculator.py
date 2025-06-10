@@ -6,7 +6,11 @@ def add(a, b):
 def subtract(a, b):
         return a - b
 
+#python cannot handle a number divided by zero becuase it's unlimited and would not finish compututing the answer
+#function to return error message when dividing number by zero
 def divide(a, b):
+        if b == 0:
+                return "Error: cannot divide by zero" #if this runs, it exits the function
         return a / b
 
 def multiply(a, b):
@@ -28,9 +32,10 @@ if operation == '+':
 elif operation == '-':
         result = subtract(num1, num2)
 elif operation == '/':
-        result = divide(num1, num2) #divide by zero not yet valid
+        result = divide(num1, num2)
 elif operation == '*':
         result = multiply(num1, num2)
 else: result = "Invalid operation"
+
 
 print("Result:", result)
