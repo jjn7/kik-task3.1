@@ -49,4 +49,4 @@ while True: #boolean
         again = input("Do you want to do another calculation? (y/n): ").lower() #.lower() ensures that the letter is turned into lowercase
         if again != 'y':
                 print("End of calculation")
-        break
+                break
