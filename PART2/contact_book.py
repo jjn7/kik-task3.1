@@ -1,8 +1,60 @@
 import json
 
-#Import contacts from JSON file
+#Import contacts from JSON file as read only
 try:
     with open("contacts.json", "r") as file:
             contacts = json.load(file)
 except FileNotFoundError:
       contacts = {}
+
+#Contact save function
+def save():
+      with open("contacts.json", "w") as file: #opens file with write permission
+            json.dump(contacts, file, indent=2) #json.dump writes the data #indent creates nested data which is easier to read
+
+#create menu funcitons
+def add_contact ():
+    name = input("Enter contact name: ")
+    check = name
+    with open("contacts.json", "r") as file:
+        data = json.load(file)
+    if check in data:
+        print(True)
+    else:
+         print(False)
+
+def search_contact ():
+
+#loop for user to chose next option
+while True:
+
+#display menu items
+    print("Contact Book Menu")
+    print("1. Add Contact")
+    print("2. Search Contact")
+    print("3. Update Contact")
+    print("4. Delete Contact")
+    print("5. Exit")
+
+#request user input
+    operation = input("What would you like to do? (add, search, update, delete, exit): ")
+
+#use selection construct to determine user input
+    if operation == "1":
+          add_contact()
+    elif operation == "2":
+          search_contact()
+    elif operation == "3":
+          update_contact()
+    elif operation == "4":
+          delete_contact()
+    elif operation == "5":
+          break
+    else:
+          print("Invalid operation, please try again")
+
+#check if user wants to complete another action
+    again = input("Do you want to continue updating the contact book? (y/n): ").lower() #.lower() ensures that the letter is turned into lowercase
+    if again != 'y':
+        print("Okay, contacts saved. Have a nice day")
+        break
