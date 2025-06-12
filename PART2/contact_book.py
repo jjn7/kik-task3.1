@@ -28,7 +28,7 @@ def add_contact ():
 
 #Create Contact Search function
 def search_contact ():
-     name = input("Enter conact name: ")
+     name = input("Enter contact name: ")
      if name in contacts:
           print("Name: ", name)
           print("Phone: ", contacts[name]["phone"])
@@ -37,6 +37,20 @@ def search_contact ():
           print("Contact not found")
 
 
+#Create Contact Delete function
+def delete_contact ():
+     name = input("Enter contact name: ")
+     if name in contacts:
+        confirm = input("Are you sure you would like to delete this contact? (y/n): ").lower()
+        if confirm == 'y':
+             del contacts[name]
+             save_contact()
+             print("Contact deleted")
+        else:
+            print("Contact not removed")
+     else:
+        print("Contact not found")
+        
 #loop for user to chose next option
 while True:
 
