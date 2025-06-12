@@ -101,7 +101,7 @@ while True:
           print("Invalid operation, please try again")
 
 #check if user wants to complete another action
-    again = input("Do you want to continue updating the contact book? (y/n): ").lower() #.lower() ensures that the letter is turned into lowercase
+    again = input("Do you want to continue using the contact book? (y/n): ").lower() #.lower() ensures that the letter is turned into lowercase
     if again != 'y':
         print("Okay, contacts saved. Have a nice day")
         break
