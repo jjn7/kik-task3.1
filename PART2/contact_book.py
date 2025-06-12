@@ -7,22 +7,26 @@ try:
 except FileNotFoundError:
       contacts = {}
 
-#Contact save function
-def save():
+def save_contact():
       with open("contacts.json", "w") as file: #opens file with write permission
             json.dump(contacts, file, indent=2) #json.dump writes the data #indent creates nested data which is easier to read
 
-#create menu funcitons
+#Add New Contact function
 def add_contact ():
     name = input("Enter contact name: ")
-    check = name
-    with open("contacts.json", "r") as file:
-        data = json.load(file)
-    if check in data:
-        print(True)
+    if name in contacts: #Check if contact exists
+        print("This contact already exists")
     else:
-         print(False)
+         email = input("Enter contact email: ")
+         phone = input("Enter contact phone: ")
+         contacts[name] = { #Create Python Dictionary
+              "email": email,
+              "phone": phone
+         }
+         save_contact()
+         print("Contact created")
 
+#Create Contact Search function
 def search_contact ():
 
 #loop for user to chose next option
@@ -37,7 +41,7 @@ while True:
     print("5. Exit")
 
 #request user input
-    operation = input("What would you like to do? (add, search, update, delete, exit): ")
+    operation = input("What would you like to do? (1, 2, 3, 4, 5): ")
 
 #use selection construct to determine user input
     if operation == "1":
