@@ -28,11 +28,19 @@ def add_contact ():
 
 #Create Contact Search function
 def search_contact ():
+     name = input("Enter conact name: ")
+     if name in contacts:
+          print("Name: ", name)
+          print("Phone: ", contacts[name]["phone"])
+          print("Email: ", contacts[name]["email"])
+     else:
+          print("Contact not found")
+
 
 #loop for user to chose next option
 while True:
 
-#display menu items
+#display first menu items
     print("Contact Book Menu")
     print("1. Add Contact")
     print("2. Search Contact")
