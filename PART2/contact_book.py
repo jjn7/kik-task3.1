@@ -37,6 +37,27 @@ def search_contact ():
           print("Contact not found")
 
 
+#Create Contact Update Function
+def update_contact ():
+     name = input("Enter contact name: ")
+     if name in contacts:
+          choice = input("What would you like to update? (email/phone/cancel)")
+          if choice == 'email':
+               email = input("Enter new email: ")
+               contacts[name]["email"] = email
+               save_contact()
+               print("Contact email has been updated")
+          elif choice == 'phone':
+               phone = input("Enter new phone: ")
+               contacts[name]["phone"] = phone
+               save_contact()
+               print("Contact phone number has been updated")
+          else:
+                print("No changes made")
+     else:
+            print("Contact not found")
+
+
 #Create Contact Delete function
 def delete_contact ():
      name = input("Enter contact name: ")
