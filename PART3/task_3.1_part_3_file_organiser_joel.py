@@ -34,19 +34,17 @@ for item in items:
         #get file extension
         name, extension = os.path.splitext(item)
 
-        #grant permossion for os to create directories
-        os.makedirs(target_folder, exists_ok=True)
         #create check for which category the file type belongs to
         for category, extensions in categories.items():
             if extension.lower() in extensions:
                 target_folder = os.path.join(path, category)
+                #grant permossion for os to create directories
+                os.makedirs(target_folder, exists_ok=True)
                 break
-            else:
-                target_folder = os.path.join(path, "Other")
+        else:
+            target_folder = os.path.join(path, "Other")
+            os.makedirs(target_folder, exists_ok=True)
 
-
-
-
-
-    #print(f ..) tells python to print a string that may contain a variable
-        ### print(f"Found file: {item} | Extension: {extension}")
+        #move the files into new directory    
+        shutil.move(full_path, os.path.join(target_folder, item))
+        print(f"Moved: {item} to {target_folder}")
