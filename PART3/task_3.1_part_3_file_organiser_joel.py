@@ -20,12 +20,10 @@ categories = {
     "Archives": [".zip", ".rar", ".7z", ".arc", ".cab", ".tar"]
 }
 
-#retrive list of items
-items = os.listdir(path)
-
-#create loop through each items
-for item in items:
-    full_path = os.path.join(path, item)
+#check files in directory and subfolders
+for root, dirs, files in os.walk(path):
+    for item in files:
+        full_path = os.path.join(root, item)
 
     #check is a file and not folder (os.path.splitext() always splits at the last period)
     if os.path.isfile(full_path):
