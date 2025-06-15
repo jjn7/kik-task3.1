@@ -37,11 +37,13 @@ for item in items:
             if extension.lower() in extensions:
                 target_folder = os.path.join(path, category)
                 #grant permossion for os to create directories
-                os.makedirs(target_folder, exists_ok=True)
+                if not os.path.exists(target_folder):
+                    os.makedirs(target_folder,)
                 break
         else:
             target_folder = os.path.join(path, "Other")
-            os.makedirs(target_folder, exists_ok=True)
+            if not os.path.exists(target_folder):
+                    os.makedirs(target_folder,)
 
         #move the files into new directory    
         shutil.move(full_path, os.path.join(target_folder, item))
