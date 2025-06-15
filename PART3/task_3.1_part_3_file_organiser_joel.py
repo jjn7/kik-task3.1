@@ -25,24 +25,24 @@ for root, dirs, files in os.walk(path):
     for item in files:
         full_path = os.path.join(root, item)
 
-    #check is a file and not folder (os.path.splitext() always splits at the last period)
-    if os.path.isfile(full_path):
-        #get file extension
-        name, extension = os.path.splitext(item)
+        #check is a file and not folder (os.path.splitext() always splits at the last period)
+        if os.path.isfile(full_path):
+            #get file extension
+            name, extension = os.path.splitext(item)
 
-        #create check for which category the file type belongs to
-        for category, extensions in categories.items():
-            if extension.lower() in extensions:
-                target_folder = os.path.join(path, category)
-                #grant permossion for os to create directories
+            #create check for which category the file type belongs to
+            for category, extensions in categories.items():
+                if extension.lower() in extensions:
+                    target_folder = os.path.join(path, category)
+                    #grant permossion for os to create directories
+                    if not os.path.exists(target_folder):
+                        os.makedirs(target_folder,)
+                    break
+            else:
+                target_folder = os.path.join(path, "Other")
                 if not os.path.exists(target_folder):
-                    os.makedirs(target_folder,)
-                break
-        else:
-            target_folder = os.path.join(path, "Other")
-            if not os.path.exists(target_folder):
-                    os.makedirs(target_folder,)
+                        os.makedirs(target_folder,)
 
-        #move the files into new directory    
-        shutil.move(full_path, os.path.join(target_folder, item))
-        print(f"Moved: {item} to {target_folder}")
+            #move the files into new directory    
+            shutil.move(full_path, os.path.join(target_folder, item))
+            print(f"Moved: {item} to {target_folder}")
