@@ -11,6 +11,15 @@ if os.path.exists(path) and os.path.isdir(path):
 else:
     print("invaid path or not a directory.")
 
+#Create a dictionary of file types for sorting
+categories = {
+    "Documents": [".pdf, .doc, .docx, .docm, .txt, .rtf, .csv, .xlsx, .xls, .xps, .xml, .odt, .ott, .ppt, .pptx"],
+    "Images": [".jpg, .jpeg, .bmp, .png, .gif, .exif, .ico, .heif, .heic, .ttif, .tif, .webp"],
+    "Videos": [".3pg, .avi, .mpeg, .m4v, .mov, .webm, .ogg"],
+    "Music": [".mp3, .mp4, .wav, .avif, .raw, .flac, .wma, .ac3, .aac, .midi"],
+    "Archives": [".zip, .rar, .7z, .arc, .cab, .tar"]
+}
+
 #retrive list of items
 items = os.listdir(path)
 
@@ -24,5 +33,8 @@ for item in items:
         name, extension = os.path.splitext(item)
 
 
-#print(f ..) tells python to print a string that may contain a variable
-print(f"Found file: {item} | Extension: {extension}")
+
+
+
+    #print(f ..) tells python to print a string that may contain a variable
+        ### print(f"Found file: {item} | Extension: {extension}")
