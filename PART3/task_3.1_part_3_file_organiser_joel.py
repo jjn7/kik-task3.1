@@ -23,8 +23,6 @@ categories = {
 #retrive list of items
 items = os.listdir(path)
 
-
-
 #create loop through each items
 for item in items:
     full_path = os.path.join(path, item)
