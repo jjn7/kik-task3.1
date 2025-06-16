@@ -17,7 +17,12 @@ def multiply(a, b):
 
 #create loop to continue requesting new calculations
 while True: #boolean
-
+# Ask if user wants to do a calculation
+        again = input("Do you want to do a calculation? (y/n): ").lower()
+        if again != 'y':
+                print("End of calculation")
+                break
+    
 #request user input
 #input() collects what the user types - note: input() is always a string in python
         first_input = input("Enter the first number: ")
@@ -29,7 +34,7 @@ while True: #boolean
                 num1 = float(first_input)
                 num2 = float(second_input)
         except ValueError: #catch the error if occurs: in this case, not a number
-                print("Invalid input, numbers only.")
+                print("Invalid input, numbers only.\n")
                 continue
 
 #use selection construct to determine user input
@@ -46,7 +51,7 @@ while True: #boolean
         print("Result:", result)
 
 #check if user wants to complete another calculation
-        again = input("Do you want to do another calculation? (y/n): ").lower() #.lower() ensures that the letter is turned into lowercase
-        if again != 'y':
-                print("End of calculation")
-                break
+#        again = input("Do you want to do another calculation? (y/n): ").lower() #.lower() ensures that the letter is turned into lowercase
+ #       if again != 'y':
+  #              print("End of calculation")
+    #            break
